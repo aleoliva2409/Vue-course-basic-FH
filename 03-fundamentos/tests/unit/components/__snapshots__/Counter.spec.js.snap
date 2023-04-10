@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Counter component should match with snapshot 1`] = `
+<h2>Counter</h2>
+<p>50 <sup>2</sup> = 2500</p>
+<p>50 <sup>2</sup> = 2500</p>
+<p>50 <sup>2</sup> = 2500</p>
+<p data-testid="counter">50</p><!-- <button v-on:click="decrease"> -1 </button> -->
+<!-- <button v-on:click="increase"> +1 </button> --><button data-decrement="decrement">-1</button><!-- new form --><button data-increment="increment">+1</button><!-- new form -->
+`;

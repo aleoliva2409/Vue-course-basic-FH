@@ -1,12 +1,13 @@
 <template>
   <h2>{{ customTitle }}</h2>
-  <p>{{ counter }} <sup>2</sup> = {{ counter * counter }} </p>
-  <p>{{ counter }} <sup>2</sup> = {{ getSquareValue() }} </p>
-  <p>{{ counter }} <sup>2</sup> = {{ squareCounter }} </p>
+  <p>{{ counter }} <sup>2</sup> = {{ counter * counter }}</p>
+  <p>{{ counter }} <sup>2</sup> = {{ getSquareValue() }}</p>
+  <p>{{ counter }} <sup>2</sup> = {{ squareCounter }}</p>
+  <p data-testid="counter">{{ counter }}</p>
   <!-- <button v-on:click="decrease"> -1 </button> -->
   <!-- <button v-on:click="increase"> +1 </button> -->
-  <button @click="decrease"> +1 </button> <!-- new form -->
-  <button @click="increase"> +1 </button> <!-- new form -->
+  <button data-decrement="decrement" @click="decrease">-1</button> <!-- new form -->
+  <button data-increment="increment" @click="increase">+1</button> <!-- new form -->
 </template>
 
 <script>
@@ -16,42 +17,37 @@ export default {
     title: String,
     start: {
       type: Number,
-      default: 10,
+      default: 50,
       // required: true,
       validator(value) {
-        return value > 25
-      }
-    }
+        return value > 25;
+      },
+    },
   },
-  name: "Counter",
+  name: 'Counter',
   data() {
     return {
-      counter: 6
-    }
+      counter: this.start,
+    };
   },
   methods: {
     getSquareValue() {
-      console.log('getSquareValue')
-      return this.counter * this.counter
+      return this.counter * this.counter;
     },
     decrease() {
-      this.counter = this.counter - 1
+      this.counter = this.counter - 1;
     },
     increase() {
-      this.counter = this.counter + 1
-    }
+      this.counter = this.counter + 1;
+    },
   },
   computed: {
     squareCounter() {
-      console.log('squareCounter')
-      return this.counter * this.counter
+      return this.counter * this.counter;
     },
     customTitle() {
-      return this.title ? this.title : 'Counter'
-    }
-  }
-}
+      return this.title ? this.title : 'Counter';
+    },
+  },
+};
 </script>
-
-<style>
-</style>

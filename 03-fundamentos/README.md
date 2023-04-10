@@ -1,5 +1,10 @@
 # 03-fundamentos
 
+## Node version
+```
+14.4.0
+```
+
 ## Project setup
 ```
 yarn install
