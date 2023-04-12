@@ -3,11 +3,11 @@
   <div class="bg-dark"></div>
 
   <div class="indecision-container">
-    <input type="text" placeholder="Ask me a question" v-model="question"/>
+    <input type="text" placeholder="Ask me a question" v-model="question" />
     <p>Remember finish your question with interrogative sign (?)</p>
 
     <div v-if="isValidateQuestion">
-      <h2>{{ question }} </h2>
+      <h2>{{ question }}</h2>
       <h1>{{ answer }}</h1>
       <!-- <h1>{{ answer === 'yes' ? 'Si' : 'No!' }}</h1> -->
     </div>
@@ -16,37 +16,45 @@
 
 <script>
 export default {
-  name: "Indecision",
+  name: 'Indecision',
   data() {
     return {
       question: '',
       answer: '',
       img: '',
-      isValidateQuestion: false
-    }
+      isValidateQuestion: false,
+    };
   },
   methods: {
     async getAnswer() {
-      this.answer = 'thinking'
+      try {
+        this.answer = 'thinking';
 
-      const { answer, image } = await fetch("https://yesno.wtf/api").then(res => res.json())
+        const { answer, image } = await fetch(
+          'https://yesno.wtf/api'
+        ).then((res) => res.json());
 
-      this.answer = answer
-      // this.answer = answer === 'yes' ? 'Si' : 'No!'
-      this.img = image
-    }
+        this.answer = answer;
+        this.answer = answer === 'yes' ? 'Yes!' : 'No!';
+        this.img = image;
+      } catch (error) {
+        this.answer = 'Can\'t load api response'
+        this.img = '';
+      }
+    },
   },
   watch: {
     question(newValue, oldValue) {
-      this.isValidateQuestion = false
+      this.isValidateQuestion = false;
 
-      if(!newValue.includes('?')) return
+      console.log({ newValue });
+      if (!newValue.includes('?')) return;
 
-      this.isValidateQuestion = true
+      this.isValidateQuestion = true;
 
-      this.getAnswer()
-    }
-  }
+      this.getAnswer();
+    },
+  },
 };
 </script>
 
