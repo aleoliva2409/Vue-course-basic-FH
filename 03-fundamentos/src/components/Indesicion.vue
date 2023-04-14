@@ -38,7 +38,7 @@ export default {
         this.answer = answer === 'yes' ? 'Yes!' : 'No!';
         this.img = image;
       } catch (error) {
-        this.answer = 'Can\'t load api response'
+        this.answer = "Can't load api response";
         this.img = '';
       }
     },

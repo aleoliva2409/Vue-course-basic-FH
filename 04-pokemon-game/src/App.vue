@@ -3,14 +3,14 @@
 </template>
 
 <script>
-import Pokemon from '@/pages/PokemonPage'
+import Pokemon from '@/pages/PokemonPage';
 
 export default {
   name: 'App',
   components: {
-    Pokemon
-  }
-}
+    Pokemon,
+  },
+};
 </script>
 
 <style>

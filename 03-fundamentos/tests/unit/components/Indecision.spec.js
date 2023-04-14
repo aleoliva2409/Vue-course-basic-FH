@@ -60,11 +60,11 @@ describe('Indecision component', () => {
     expect(wrapper.vm.answer).toBe('Yes!');
   });
 
-  test('tests on getAnswer - Error', async() => {
+  test('tests on getAnswer - Error', async () => {
     fetch.mockImplementationOnce(() => Promise.reject('Api is down'));
-    
+
     await wrapper.vm.getAnswer();
-    
+
     const img = wrapper.find('img');
 
     expect(img.exists()).toBeFalsy();

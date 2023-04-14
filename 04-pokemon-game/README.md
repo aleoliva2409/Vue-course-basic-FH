@@ -1,5 +1,10 @@
 # 04-pokemon-game
 
+## Node version
+```
+16.9.1
+```
+
 ## Project setup
 ```
 yarn install

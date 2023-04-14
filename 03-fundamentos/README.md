@@ -2,7 +2,7 @@
 
 ## Node version
 ```
-14.4.0
+16.9.1
 ```
 
 ## Project setup

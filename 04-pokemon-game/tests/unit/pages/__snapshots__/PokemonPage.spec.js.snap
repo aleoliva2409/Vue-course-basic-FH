@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PokemonPage Component should match with snapshot 1`] = `<h1>Wait a minute please ...</h1>`;
+
+exports[`PokemonPage Component should match with snapshot when mixPokemons were loaded 1`] = `
+<div>
+  <h1>Who's that pokemon?</h1><!-- img -->
+  <pokemon-picture-stub pokemonid="5" showpokemon="false"></pokemon-picture-stub><!-- options -->
+  <!-- el metodo dentro de pokemon-selected(checkAnswer) recibe el como argumento lo que se emita, ejemplo @pokemon-selected="checkAnswer(evento emitido)" -->
+  <pokemon-options-stub pokemons="[object Object],[object Object],[object Object],[object Object]"></pokemon-options-stub>
+  <!--v-if-->
+</div>
+`;

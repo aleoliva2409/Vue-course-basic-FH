@@ -2,7 +2,7 @@
   <h1 v-if="!pokemon">Wait a minute please ...</h1>
 
   <div v-else>
-    <h1>Who's this pokemon?</h1>
+    <h1>Who's that pokemon?</h1>
 
     <!-- img -->
     <PokemonPicture :pokemonId="pokemon.id" :showPokemon="showPokemon" />
@@ -49,23 +49,23 @@ export default {
     checkAnswer(id) {
       if (id) {
         this.showPokemon = true;
-        this.showAnswer = true
+        this.showAnswer = true;
 
         if (id === this.pokemon.id) {
-          this.message = `Right!! It's ${this.pokemon.name}`
+          this.message = `Right!! It's ${this.pokemon.name}`;
         } else {
-          this.message = `Oops, you're wrong!!! It was ${this.pokemon.name}`
+          this.message = `Oops, you're wrong!!! It was ${this.pokemon.name}`;
         }
       }
     },
     newGame() {
-      this.pokemons = [],
-      this.pokemon = null,
-      this.showPokemon = false,
-      this.showAnswer = false,
-      this.message = '',
-      this.mixPokemons()
-    }
+      (this.pokemons = []),
+        (this.pokemon = null),
+        (this.showPokemon = false),
+        (this.showAnswer = false),
+        (this.message = ''),
+        this.mixPokemons();
+    },
   },
   mounted() {
     this.mixPokemons();
