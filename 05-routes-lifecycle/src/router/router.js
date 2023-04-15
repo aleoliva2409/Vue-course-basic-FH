@@ -18,7 +18,7 @@ import authenticateGuard from './auth-guard';
 const routes = [
   {
     path: '/',
-    redirect: '/pokemon'
+    redirect: '/pokemon',
   },
   {
     path: '/pokemon',
@@ -49,7 +49,7 @@ const routes = [
         },
       },
       {
-        path: 'about', // ? se coloca sin '/' ya que la ser hija no es necesario
+        path: 'about', // ? se coloca sin '/' ya que al ser hija no es necesario
         name: 'pokemon-about',
         component: () =>
           import(
@@ -58,14 +58,14 @@ const routes = [
       },
       {
         path: '',
-        redirect: { name: 'pokemon-home'}
-      }
+        redirect: { name: 'pokemon-home' },
+      },
     ],
   },
   {
     path: '/dbz',
     name: 'dbz',
-    beforeEnter: [ authenticateGuard],
+    beforeEnter: [authenticateGuard],
     component: () =>
       import(
         /* webpackChunkName: "DBZLayout" */ '@/modules/dbz/layouts/DBZLayout'
@@ -89,8 +89,8 @@ const routes = [
       },
       {
         path: '',
-        redirect: { name: 'dbz-characters'}
-      }
+        redirect: { name: 'dbz-characters' },
+      },
     ],
   },
   {
@@ -129,7 +129,7 @@ const router = createRouter({
 
 // const canAccess = () => {
 //   return new Promise (resolve => {
-    
+
 //       const random = Math.random() * 100
 //       if(random > 50) {
 //         console.log('User Authenticate - Can Access')
@@ -138,7 +138,7 @@ const router = createRouter({
 //         console.log(random, 'User blocked - Can Access')
 //         resolve(false)
 //       }
-    
+
 //   })
 // }
 

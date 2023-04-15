@@ -7,13 +7,16 @@
 <script>
 // import Navbar from '@/modules/shared/components/Navbar'
 //? components need this next function to use lazyload
-import { defineAsyncComponent } from 'vue'
-
+import { defineAsyncComponent } from 'vue';
 
 export default {
   name: 'App',
   components: {
-    Navbar: defineAsyncComponent(() => import( /* webpackChunkName: "HomePage" */ '@/modules/shared/components/Navbar'))
+    Navbar: defineAsyncComponent(() =>
+      import(
+        /* webpackChunkName: "HomePage" */ '@/modules/shared/components/Navbar'
+      )
+    ),
   },
 };
 </script>

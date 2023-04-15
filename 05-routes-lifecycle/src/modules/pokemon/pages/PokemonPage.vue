@@ -1,7 +1,7 @@
 <template>
   <h1>Pokemon: #{{ id }}</h1>
   <div v-if="pokemon">
-    <img :src="pokemon.sprites.front_default" :alt="pokemon.name">
+    <img :src="pokemon.sprites.front_default" :alt="pokemon.name" />
   </div>
 </template>
 
@@ -28,16 +28,14 @@ export default {
         const pokemon = await res.json();
         this.pokemon = pokemon;
       } catch (error) {
-        this.$router.push('/')
+        this.$router.push('/');
       }
     },
   },
   watch: {
     id() {
-      this.getPokemon()
-    }
-  }
+      this.getPokemon();
+    },
+  },
 };
 </script>
-
-<style></style>
