@@ -7,10 +7,10 @@ export const uploadImages = async (file) => {
     
     const formData = new FormData()
 
-    formData.append('upload_preset', 'vue-course')
+    formData.append('upload_preset', 'front-courses-journal-app')
     formData.append('file', file)
 
-    const url = 'https://api.cloudinary.com/v1_1/dggt7avhc/image/upload'
+    const url = 'https://api.cloudinary.com/v1_1/mystoreforcourses/upload'
 
     const { data } = await axios.post(url, formData)
 
