@@ -19,5 +19,5 @@ export const getEntryById =
 
     if (!entry) return;
 
-    return entry;
+    return { ...entry };
   };

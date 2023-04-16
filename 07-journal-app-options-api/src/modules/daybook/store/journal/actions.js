@@ -7,7 +7,7 @@ export const loadEntries = async ({ commit }) => {
   try {
     const { data } = await journalApi.get('/entries.json');
 
-    if(!data) return commit('setEntries', [])
+    if (!data) return commit('setEntries', []);
 
     const entries = [];
     for (let id of Object.keys(data)) {
@@ -60,10 +60,9 @@ export const createEntry = async ({ commit }, entry) => {
 
 export const deleteEntryById = async ({ commit }, id) => {
   try {
-    await journalApi.delete(`/entries/${id}.json`)
+    await journalApi.delete(`/entries/${id}.json`);
 
-    commit('removeEntry', id)
-
+    commit('removeEntry', id);
   } catch (error) {
     console.log(error);
   }

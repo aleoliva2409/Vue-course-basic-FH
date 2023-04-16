@@ -1,7 +1,7 @@
-import axios from "axios";
+import axios from 'axios';
 
 const journalApi = axios.create({
-  baseURL: 'https://vue-journal-vuex-default-rtdb.firebaseio.com'
-})
+  baseURL: 'https://journal-app-backend-2023-default-rtdb.firebaseio.com/',
+});
 
-export default journalApi
+export default journalApi;

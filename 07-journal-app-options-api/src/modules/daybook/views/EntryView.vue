@@ -28,7 +28,12 @@
 
   <Fab icon="fa-save" @on-click="saveEntry" />
 
-  <img v-if="entry.picture && !localImg" :src="entry.picture" alt="lol" class="img-thumbnail" />
+  <img
+    v-if="entry.picture && !localImg"
+    :src="entry.picture"
+    alt="lol"
+    class="img-thumbnail"
+  />
 
   <img v-if="localImg" :src="localImg" alt="lol" class="img-thumbnail" />
 </template>
@@ -37,7 +42,7 @@
 import { mapActions, mapGetters } from 'vuex';
 import Fab from '../components/Fab.vue';
 import { getDayMonthYear } from '../helpers/getDayMonthYear';
-import { uploadImages } from '../helpers/uploadImages'
+import { uploadImages } from '../helpers/uploadImages';
 
 export default {
   components: {
@@ -92,16 +97,15 @@ export default {
       this.entry = entry;
     },
     async saveEntry() {
-
       this.$swal({
         title: 'Espere por favor',
-        allowOutsideClick: false
-      })
+        allowOutsideClick: false,
+      });
 
-      this.$swal.showLoading()
+      this.$swal.showLoading();
 
-      const picture = await uploadImages(this.file)
-      this.entry.picture = picture
+      const picture = await uploadImages(this.file);
+      this.entry.picture = picture;
 
       if (this.entry.id) {
         await this.updateEntry(this.entry);
@@ -110,7 +114,7 @@ export default {
         this.$router.push({ name: 'entry', params: { id } });
       }
 
-      this.file = null
+      this.file = null;
       this.$swal('Guardado', 'Entrada registrada con exito', 'success');
     },
 
@@ -139,9 +143,9 @@ export default {
       const imgFile = e.target.files[0];
 
       if (!imgFile) {
-        this.file = null
-        this.localImg = null
-        return
+        this.file = null;
+        this.localImg = null;
+        return;
       }
 
       this.file = imgFile;
