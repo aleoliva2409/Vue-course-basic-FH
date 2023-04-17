@@ -1,7 +1,9 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
-    <button @click="goToDaybook">Go to daybook</button>
+    <button @click="goToDaybook" class="btn btn-primary">Primary</button>
+    <button @click="goToDaybook" class="btn btn-secondary">Secondary</button>
+    <button @click="goToDaybook" class="btn btn-success">Success</button>
   </div>
 </template>
 
@@ -11,7 +13,7 @@
 export default {
   methods: {
     goToDaybook() {
-      this.$router.push({ name: 'daybook' });
+      this.$router.push({ name: 'no-entry' });
     },
   },
 };

@@ -17,6 +17,6 @@ export const addEntry = (state, entry) => {
   state.entries = [entry, ...state.entries];
 };
 
-export const removeEntry = (state, id) => {
+export const deleteEntry = (state, id) => {
   state.entries = state.entries.filter(entry => entry.id !== id);
 };

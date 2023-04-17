@@ -45,6 +45,7 @@ import { getDayMonthYear } from '../helpers/getDayMonthYear';
 import { uploadImages } from '../helpers/uploadImages';
 
 export default {
+  name: 'EntryView',
   components: {
     Fab,
   },

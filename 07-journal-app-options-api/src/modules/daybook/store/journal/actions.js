@@ -25,16 +25,18 @@ export const loadEntries = async ({ commit }) => {
 
 export const updateEntry = async ({ commit }, entry) => {
   try {
-    // const {id, text, date, picture} = entry
-    // const { data } = await journalApi.put(`/entries/${id}`, {
-    //   text,
-    //   date,
-    //   picture,
-    // });
-    const { id, ...rest } = entry;
-    await journalApi.put(`/entries/${id}.json`, { ...rest });
+    const { id, text, date, picture } = entry;
+    const dataToUpdate = {
+      text,
+      date,
+      picture,
+    };
 
-    commit('updateEntry', { ...entry });
+    await journalApi.put(`/entries/${id}.json`, dataToUpdate);
+    // const { id, ...rest } = entry;
+    // await journalApi.put(`/entries/${id}.json`, { ...rest });
+
+    commit('updateEntry', { ...dataToUpdate, id: entry.id });
   } catch (error) {
     console.log(error);
   }
@@ -58,11 +60,11 @@ export const createEntry = async ({ commit }, entry) => {
   }
 };
 
-export const deleteEntryById = async ({ commit }, id) => {
+export const deleteEntry = async ({ commit }, id) => {
   try {
     await journalApi.delete(`/entries/${id}.json`);
 
-    commit('removeEntry', id);
+    commit('deleteEntry', id);
   } catch (error) {
     console.log(error);
   }

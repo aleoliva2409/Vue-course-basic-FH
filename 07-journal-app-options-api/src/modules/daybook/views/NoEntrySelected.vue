@@ -10,6 +10,7 @@
 import Fab from '../components/Fab.vue';
 
 export default {
+  name: 'NoEntrySelected',
   components: {
     Fab,
   },
