@@ -79,7 +79,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions('journal', ['updateEntry', 'createEntry', 'deleteEntryById']), //ahi lo ponen pero yo lo puse arriba
+    ...mapActions('journal', ['updateEntry', 'createEntry', 'deleteEntry']), //ahi lo ponen pero yo lo puse arriba
     loadEntry() {
       let entry;
       this.localImg = null;
@@ -98,7 +98,7 @@ export default {
       this.entry = entry;
     },
     async saveEntry() {
-      this.$swal({
+      this.$swal.fire({
         title: 'Espere por favor',
         allowOutsideClick: false,
       });
@@ -116,11 +116,11 @@ export default {
       }
 
       this.file = null;
-      this.$swal('Guardado', 'Entrada registrada con exito', 'success');
+      this.$swal.fire('Guardado', 'Entrada registrada con exito', 'success');
     },
 
     async deleteEntry() {
-      const { isConfirmed } = await this.$swal({
+      const { isConfirmed } = await this.$swal.fire({
         title: 'Esta seguro?',
         text: 'Una vez borrado, no se podra recuperar',
         showDenyButton: true,
@@ -128,16 +128,16 @@ export default {
       });
 
       if (this.entry.id && isConfirmed) {
-        this.$swal({
+        this.$swal.fire({
           title: 'Espere por favor',
           allowOutsideClick: false,
         });
 
         this.$swal.showLoading();
-        await this.deleteEntryById(this.entry.id);
+        await this.deleteEntry(this.entry.id);
         this.$router.push({ name: 'no-entry' });
 
-        this.$swal('Eliminado', '', 'success');
+        this.$swal.fire('Eliminado', '', 'success');
       }
     },
     selectedImg(e) {
