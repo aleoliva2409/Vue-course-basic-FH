@@ -23,20 +23,30 @@ const router = createRouter({
       component: () => import('../views/CounterView.vue'),
     },
     {
-    path: '/users',
-    name: 'users',
-    component: () => import('../views/UsersView.vue')
-  },
-  {
-    path: '/pokemon-search',
-    name: 'pokemon-search',
-    component: () => import('../views/SearchPokemon.vue')
-  },
-  {
-    path: '/pokemon/:id',
-    name: 'pokemon-id',
-    component: () => import('../views/Pokemon.vue')
-  },
+      path: '/users',
+      name: 'users',
+      component: () => import('../views/UsersView.vue'),
+    },
+    {
+      path: '/pokemon-search',
+      name: 'pokemon-search',
+      component: () => import('../views/SearchPokemon.vue'),
+    },
+    {
+      path: '/pokemon/:id',
+      name: 'pokemon-id',
+      component: () => import('../views/Pokemon.vue'),
+    },
+    {
+      path: '/todo',
+      name: 'todo',
+      component: () => import('../views/TodoVuex.vue'),
+    },
+    {
+      path: '/slots',
+      name: 'slots',
+      component: () => import('../views/CustomSlots.vue'),
+    },
   ],
 });
 

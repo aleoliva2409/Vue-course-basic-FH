@@ -4,7 +4,9 @@
     <RouterLink to="/about">About</RouterLink> |
     <RouterLink :to="{ name: 'counter' }">Counter</RouterLink> |
     <RouterLink :to="{ name: 'users' }">Usuarios</RouterLink> |
-    <RouterLink :to="{ name: 'pokemon-search' }">Buscar</RouterLink>
+    <RouterLink :to="{ name: 'pokemon-search' }">Buscar</RouterLink> |
+    <RouterLink :to="{ name: 'todo' }">Todo</RouterLink> |
+    <RouterLink :to="{ name: 'slots' }">Slots</RouterLink>
   </div>
 
   <RouterView v-slot="{ Component, route }">
