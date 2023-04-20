@@ -22,6 +22,21 @@ const router = createRouter({
       name: 'counter',
       component: () => import('../views/CounterView.vue'),
     },
+    {
+    path: '/users',
+    name: 'users',
+    component: () => import('../views/UsersView.vue')
+  },
+  {
+    path: '/pokemon-search',
+    name: 'pokemon-search',
+    component: () => import('../views/SearchPokemon.vue')
+  },
+  {
+    path: '/pokemon/:id',
+    name: 'pokemon-id',
+    component: () => import('../views/Pokemon.vue')
+  },
   ],
 });
 
