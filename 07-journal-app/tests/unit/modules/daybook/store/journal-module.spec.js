@@ -1,6 +1,6 @@
 import { createStore } from 'vuex';
 import journal from '@/modules/daybook/store/journal';
-import { journalState } from '../../../../mocks/test-journal-state';
+import { journalState } from '../../../mocks/test-journal-state';
 
 const createVuexStore = (initialState) =>
   createStore({

@@ -14,7 +14,7 @@ export default {
         ),
     },
     {
-      path: '/register',
+      path: 'register',
       name: 'register',
       component: () =>
         import(

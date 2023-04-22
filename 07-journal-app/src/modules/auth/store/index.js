@@ -1,14 +1,14 @@
-import state from './state'
-import * as actions from './actions'
-import * as getters from './getters'
-import * as mutations from './mutations'
+import state from './state';
+import * as actions from './actions';
+import * as getters from './getters';
+import * as mutations from './mutations';
 
-const journalModule = {
+const authModule = {
   namespaced: true,
   actions,
   getters,
   mutations,
-  state
-}
+  state,
+};
 
-export default journalModule
+export default authModule;

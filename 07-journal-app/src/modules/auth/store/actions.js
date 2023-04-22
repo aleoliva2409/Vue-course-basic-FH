@@ -1,71 +1,73 @@
-import journalApi from '@/api/journalApi';
-// export const actions = async ({ commit }) => {
+import authApi from '@/api/authApi';
 
-// }
+export const createUser = async ({ commit }, user) => {
+  const { name, email, password } = user;
 
-export const loadEntries = async ({ commit }) => {
   try {
-    const { data } = await journalApi.get('/entries.json');
+    const { data } = await authApi.post(':signUp', {
+      email,
+      password,
+      returnSecureToken: true,
+    });
+    const { idToken, refreshToken } = data;
 
-    if (!data) return commit('setEntries', []);
+    await authApi.post(':update', { displayName: name, idToken, refreshToken });
 
-    const entries = [];
-    for (let id of Object.keys(data)) {
-      entries.push({
-        id,
-        ...data[id],
-      });
-    }
+    delete user.password;
+    commit('loginUser', { user, idToken, refreshToken });
 
-    commit('setEntries', entries);
+    return { ok: true };
   } catch (error) {
-    console.log(error);
+    return { ok: false, message: error.response.data.error.message };
   }
 };
 
-export const updateEntry = async ({ commit }, entry) => {
+export const signInUser = async ({ commit }, user) => {
+  const { email, password } = user;
+
   try {
-    const { id, text, date, picture } = entry;
-    const dataToUpdate = {
-      text,
-      date,
-      picture,
+    const { data } = await authApi.post(':signInWithPassword', {
+      email,
+      password,
+      returnSecureToken: true,
+    });
+    const { displayName, idToken, refreshToken } = data;
+
+    user.name = displayName;
+    delete user.password;
+
+    commit('loginUser', { user, idToken, refreshToken });
+
+    return { ok: true };
+  } catch (error) {
+    return { ok: false, message: error.response.data.error.message };
+  }
+};
+
+export const checkAuthentication = async ({ commit }) => {
+  const idToken = localStorage.getItem('idToken');
+  const refreshToken = localStorage.getItem('refreshToken');
+
+  if (!idToken) {
+    commit('logout');
+    return { ok: false, message: 'No hay token' };
+  }
+
+  try {
+    const { data } = await authApi.post(':lookup', { idToken });
+    // console.log(data)
+    const { displayName, email } = data.users[0];
+
+    const user = {
+      name: displayName,
+      email,
     };
 
-    await journalApi.put(`/entries/${id}.json`, dataToUpdate);
-    // const { id, ...rest } = entry;
-    // await journalApi.put(`/entries/${id}.json`, { ...rest });
+    commit('loginUser', { user, idToken, refreshToken });
 
-    commit('updateEntry', { ...dataToUpdate, id: entry.id });
+    return { ok: true };
   } catch (error) {
-    console.log(error);
-  }
-};
-
-export const createEntry = async ({ commit }, entry) => {
-  try {
-    const { text, date, picture } = entry;
-
-    const { data } = await journalApi.post('/entries.json', {
-      text,
-      date,
-      picture,
-    });
-
-    commit('addEntry', { text, date, picture, id: data.name });
-
-    return data.name; // ? id
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export const deleteEntry = async ({ commit }, id) => {
-  try {
-    await journalApi.delete(`/entries/${id}.json`);
-
-    commit('deleteEntry', id);
-  } catch (error) {
-    console.log(error);
+    commit('logout');
+    return { ok: false, message: error.response.data.error.message };
   }
 };
