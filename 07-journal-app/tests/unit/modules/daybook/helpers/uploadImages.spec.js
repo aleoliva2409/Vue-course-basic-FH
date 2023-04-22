@@ -28,7 +28,6 @@ describe('Tests on uploadImage ', () => {
     // Tomar el ID
     const segments = url.split('/');
     const imageId = segments[segments.length - 1].replace('.jpg', '');
-    console.log({ imageId });
     cloudinary.v2.api.delete_resources(['journal-app/' + imageId], {}, () => {
       done();
     });

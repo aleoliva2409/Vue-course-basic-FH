@@ -3,7 +3,7 @@ import { createStore } from 'vuex';
 
 // import Swal from 'sweetalert2';
 
-import journal from '@/modules/daybook/store/journal';
+import journal from '@/modules/daybook/store';
 import { journalState } from '../../../mocks/test-journal-state';
 
 import EntryView from '@/modules/daybook/views/EntryView.vue';

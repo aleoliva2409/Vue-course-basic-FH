@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tests Navbar component should show component 1`] = `
+<nav class="navbar bg-primary"><a class="navbar-brand text-white" href="#"><img src="" alt="logo" height="24" class="d-inline-block align-text-top mx-2"> Alejandro Oliva</a>
+  <div class="d-flex"><button class="btn btn-outline-info mx-2"><i class="fa fa-sign-out-alt"></i></button></div>
+</nav>
+`;

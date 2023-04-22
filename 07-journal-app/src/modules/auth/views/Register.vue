@@ -60,9 +60,9 @@ export default {
     const router = useRouter();
     const { createUser } = useAuth();
     const userForm = ref({
-      name: 'Alejandro Oliva',
-      email: 'danieloliva181@gmail.com',
-      password: '123456',
+      name: '',
+      email: '',
+      password: '',
     });
     return {
       userForm,
