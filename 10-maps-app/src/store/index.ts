@@ -1,8 +1,11 @@
 import { createStore } from 'vuex';
+import placesModule from './places';
+import mapModule from './map';
 
 const store = createStore({
-  state: {
-    isSideMenuOpen: true,
+  modules: {
+    places: placesModule,
+    map: mapModule,
   },
 });
 

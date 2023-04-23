@@ -1,1 +1,1 @@
-declare module 'vuex';
+declare module 'vuex'
